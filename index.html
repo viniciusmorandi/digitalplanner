@@ -15,11 +15,21 @@
     }
     #particles-js {
       position: fixed;
-      top: 0;
+      /* Centralizado e tamanho circular ajustável */
+      top: 10vh;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80vw;
+      height: 80vw;
+      max-width: 80vh;
+      max-height: 80vh;
       z-index: 1;
+      border-radius: 50%;            /* Efeito círculo */
+      overflow: hidden;
+      box-shadow: 0 0 100px 50px #021a1aa8 inset; /* Fade nas bordas */
+      background: transparent;
     }
   </style>
 </head>
