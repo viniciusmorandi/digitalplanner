@@ -14,11 +14,9 @@
       height: 100vh;
       overflow: hidden;
       background: #021a1a;
-      font-family: "Inter", sans-serif;
-      color: #fff;
     }
 
-    /* container das partículas */
+    /* Container das partículas */
     #particles-js {
       position: fixed;
       top: 0;
@@ -30,7 +28,7 @@
       z-index: 1;
     }
 
-    /* gradiente de fade por cima do canvas */
+    /* Fade sobre as partículas */
     #particles-js::after {
       content: "";
       position: absolute;
@@ -40,66 +38,61 @@
         rgba(2,26,26,0) 35%,
         rgba(2,26,26,1) 100%
       );
-      pointer-events: none;
+      pointer-events: none; /* importante: mantém interatividade do mouse */
       z-index: 2;
-    }
-
-    /* conteúdo principal */
-    .content {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #00f5a0, #00d9f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #b8f5e1;
-      max-width: 600px;
     }
   </style>
 </head>
 
 <body>
-  <!-- partículas -->
+  <!-- Apenas o efeito visual -->
   <div id="particles-js"></div>
 
-  <!-- conteúdo principal -->
-  <div class="content">
-    <h1>Planner · Inteligência Digital</h1>
-    <p>Transforme seu conhecimento em soluções digitais de alto valor.  
-      IA + Estratégia para ampliar sua autoridade profissional.</p>
-  </div>
-
   <script>
-    // Configuração inline (você pode usar um arquivo JSON se preferir)
+    /* Configuração aprimorada do particles.js */
     particlesJS("particles-js", {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { value: 130, density: { enable: true, value_area: 800 } },
         color: { value: "#00f5a0" },
         shape: { type: "circle" },
-        opacity: { value: 0.4, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 120, color: "#00d9f5", opacity: 0.3, width: 1 },
-        move: { enable: true, speed: 1.2, direction: "none", random: false, straight: false, out_mode: "out" }
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: { enable: true, speed: 0.4, opacity_min: 0.2, sync: false }
+        },
+        size: {
+          value: 4,
+          random: true,
+          anim: { enable: true, speed: 2, size_min: 0.8, sync: false }
+        },
+        line_linked: {
+          enable: true,
+          distance: 130,
+          color: "#00d9f5",
+          opacity: 0.4,
+          width: 1.2
+        },
+        move: {
+          enable: true,
+          speed: 1.8,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          attract: { enable: false }
+        }
       },
       interactivity: {
         detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false }, resize: true },
-        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } }
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 160, line_linked: { opacity: 0.6 } },
+          push: { particles_nb: 4 }
+        }
       },
       retina_detect: true
     });
