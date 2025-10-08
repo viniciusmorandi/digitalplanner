@@ -1,48 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Planner · Inteligência Digital</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Planner · Particles</title>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       width: 100vw;
       height: 100vh;
-      overflow: hidden;
       background: #021a1a;
+      overflow: hidden;
     }
 
+    /* container principal */
     #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
+      position: relative; /* não fixed para evitar isolamento do contexto */
+      width: 96vw;
+      height: 62vh;
+      margin: 4vh auto;
+      border-radius: 64% / 28%;
       z-index: 1;
     }
-    #particles-js::after {
-      content: "";
+
+    /* fade aplicado por um overlay separado, fora do stacking context do canvas */
+    #fade-overlay {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 96vw;
+      height: 62vh;
+      margin: 4vh auto;
+      border-radius: 64% / 28%;
       background: radial-gradient(
-        ellipse 92% 65% at 50% 50%,
-        rgba(2,26,26,0) 74%,
-        rgba(2,26,26,0.9) 100%
+        ellipse 75% 46% at 50% 50%,
+        rgba(2,26,26,0) 35%,
+        rgba(2,26,26,1) 100%
       );
-      pointer-events: none;
       z-index: 2;
+      pointer-events: none; /* garante interatividade */
+    }
+
+    /* garante que o canvas do particles.js preencha e aceite interações */
+    #particles-js canvas {
+      position: absolute !important;
+      width: 100% !important;
+      height: 100% !important;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
+  <div id="fade-overlay"></div>
+
   <script>
-    particlesJS.load('particles-js', 'particlesjs.json', function() {
-      console.log('Particles.js config loaded');
+    /* Configuração idêntica à demo oficial */
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#00f5a0"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00d9f5",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
     });
   </script>
 </body>
