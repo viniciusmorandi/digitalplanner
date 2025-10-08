@@ -20,14 +20,12 @@
       right: 0;
       margin: auto;
       width: 96vw;
-      height: 60vh;
+      height: 62vh;
       z-index: 1;
-      border-radius: 54% / 16%;   /* oval horizontal */
+      border-radius: 55% / 18%;
       overflow: hidden;
-      background: #021a1a;
-      box-shadow: 
-        0 0 140px 55px #021a1a inset,
-        0 0 80px 25px #021a1a inset; /* fade natural, cor igual do fundo */
+      /* Gradiente fade de dentro para fora (oval!) */
+      background: radial-gradient(ellipse 75% 46% at 50% 50%, #021a1a 77%, rgba(2,26,26,0.1) 87%, rgba(2,26,26,0) 99%);
     }
   </style>
 </head>
