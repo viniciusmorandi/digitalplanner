@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Planner · Inteligência Digital</title>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
   <style>
     html, body {
       margin: 0;
@@ -16,31 +15,35 @@
       background: #021a1a;
     }
 
-    /* Container das partículas */
     #particles-js {
       position: fixed;
       top: 0;
       left: 0;
-      width: 99vw;
-      height: 99vh;
-      border-radius: 64% / 28%;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
       z-index: 1;
     }
-
-    /* Fade sobre as partículas */
     #particles-js::after {
       content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(
-        ellipse 65% 36% at 40% 40%,
-        rgba(2,26,26,0) 25%,
-        rgba(2,26,26,1) 100%
+        ellipse 92% 65% at 50% 50%,
+        rgba(2,26,26,0) 74%,
+        rgba(2,26,26,0.9) 100%
       );
-      pointer-events: none; /* importante: mantém interatividade do mouse */
+      pointer-events: none;
       z-index: 2;
     }
   </style>
 </head>
+<body>
+  <div id="particles-js"></div>
+  <script>
+    particlesJS.load('particles-js', 'particlesjs.json', function() {
+      console.log('Particles.js config loaded');
+    });
+  </script>
+</body>
 </html>
